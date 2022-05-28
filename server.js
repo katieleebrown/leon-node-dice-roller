@@ -15,30 +15,18 @@ const server = http.createServer((req, res) => {
       res.end();
     });
   }
-  else if (page == '/otherpage') {
-    fs.readFile('otherpage.html', function (err, data) {
-      res.writeHead(200, { 'Content-Type': 'text/html' });
-      res.write(data);
-      res.end();
-    });
-  }
-  else if (page == '/otherotherpage') {
-    fs.readFile('otherotherpage.html', function (err, data) {
-      res.writeHead(200, { 'Content-Type': 'text/html' });
-      res.write(data);
-      res.end();
-    });
-  }
   // Future To-Do: turn random rolling into a function
   else if (page == '/api') {
     res.writeHead(200, { 'Content-Type': 'application/json' });
-    random = Math.ceil(Math.random() * 6)
-    const objToJson = {
+    if ('sides' in params) {
+      random = Math.ceil(Math.random() * Math.abs(params["sides"]))
+      const objToJson = {
       name: random,
+      }
+      res.end(JSON.stringify(objToJson));
     }
-    res.end(JSON.stringify(objToJson));
-    // if ('student' in params) {
-    //   if (params['student'] == 'd6') {
+    
+    
 
     //   }//student = leon
     // else if (params['student'] != 'leon') {
