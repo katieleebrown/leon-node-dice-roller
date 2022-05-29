@@ -19,7 +19,7 @@ const server = http.createServer((req, res) => {
   else if (page == '/api') {
     res.writeHead(200, { 'Content-Type': 'application/json' });
     if ('sides' in params) {
-      random = Math.ceil(Math.random() * Math.abs[integerSides])
+      random = Math.ceil(Math.random() * Math.abs(params["sides"]))
       const objToJson = {
       name: random,
     }
